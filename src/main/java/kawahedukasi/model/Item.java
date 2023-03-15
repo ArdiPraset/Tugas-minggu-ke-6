@@ -1,10 +1,11 @@
 package kawahedukasi.model;
 
-
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import io.quarkus.security.IdentityAttribute;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "item")
@@ -18,11 +19,14 @@ public class Item extends PanacheEntityBase {
     @Column (name= "name")
     public String name;
 
+    @Column (name = "email")
+    public String email;
+
     @Column (name= "count")
-    public String count;
+    public int count;
 
     @Column (name= "price")
-    public String price;
+    public int price;
 
     @Column (name= "type")
     public String type;
@@ -30,11 +34,13 @@ public class Item extends PanacheEntityBase {
     @Column (name= "description")
     public String description;
 
+    @CreationTimestamp
     @Column (name= "createdAt")
-    public String createdAt;
+    public LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column (name= "updatedAt")
-    public String updatedAt;
+    public LocalDateTime updatedAt;
 
     public Item() {
     }
